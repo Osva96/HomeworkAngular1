@@ -5,16 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MuseumitemsComponent } from './pages/museumitems/museumitems.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { MuseumService } from 'src/app/services/museum/museum.service';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MuseumitemsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MuseumService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
