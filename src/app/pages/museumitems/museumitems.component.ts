@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MuseumService } from 'src/app/services/museum/museum.service';
+import { Router, Route } from '@angular/router';
 // Import uniqueobject.model
 
 @Component({
@@ -13,7 +14,8 @@ export class MuseumitemsComponent implements OnInit {
   allItemsListGeneral: any[] = [];
 
   constructor(
-    public museumService: MuseumService
+    public museumService: MuseumService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
@@ -23,7 +25,7 @@ export class MuseumitemsComponent implements OnInit {
       let obtenerListaSimple = JSON.parse(simplificar);
       let listaOficial = obtenerListaSimple.objectIDs;
 
-      console.log(listaOficial);
+      // console.log(listaOficial);
 
       listaOficial.forEach(element => {
         this.museumService.GetItemId(element).subscribe((item) => {
@@ -33,7 +35,7 @@ export class MuseumitemsComponent implements OnInit {
         });
       });
 
-      console.log("Lista de items", this.allItemsListGeneral);
+      // console.log("Lista de items", this.allItemsListGeneral);
 
     }, (err) => {
       console.log("Error in: ", err);
@@ -41,7 +43,9 @@ export class MuseumitemsComponent implements OnInit {
   }
 
   GoToSpecificItem(id: number) {
-    console.log(id);
+    // console.log(id);
+    this.router.navigate(['/item', id]);
+    // this.router.navigateByUrl('/item/');
   }
 
 }
