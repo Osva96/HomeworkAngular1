@@ -34,10 +34,14 @@ export class MuseumitemsComponent implements OnInit {
       });
 
       console.log("Lista de items", this.allItemsListGeneral);
-      
+
     }, (err) => {
       console.log("Error in: ", err);
     });
+  }
+
+  GoToSpecificItem(id: number) {
+    console.log(id);
   }
 
 }
